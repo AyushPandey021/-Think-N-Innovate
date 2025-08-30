@@ -19,11 +19,11 @@ const App = () => {
     <Element>  <Home/></Element>
     <Element>    <Product/></Element>
     <Element>  <Acard/></Element>
-    <Element>  <Testo/></Element>
+    {/* <Element>  <Testo/></Element> */}
  
     <Element>  <HeroSection/></Element>
     <Element>  <Feed/></Element>
-    <Element>  <GlowCard/></Element>
+    {/* <Element>  <GlowCard/></Element> */}
     
       {/* <More/>
         <HeroSection />
