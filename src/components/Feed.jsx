@@ -22,7 +22,7 @@ const cardsData = [
 
 const FeedbackCards = () => {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6 md:p-10">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-[#f4f4f4] p-6 md:p-10">
       {/* ✅ Main Heading */}
       <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-blue-900 mb-8">
         Feedback Video Showcase

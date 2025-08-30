@@ -1,9 +1,9 @@
 import React from 'react'
 import {  Element } from "react-scroll";
-import GlowCard from './components/blog/Glowcrd/GrowCard'
+// import GlowCard from './components/blog/Glowcrd/GrowCard'
 import HeroSection from './components/HeroSection'
 // import HeroSection from './components/'
-import Acard from "./components/blog/Glowcrd/Acard"
+import Acard from "./components/Testo/Acard"
 import Home from "./components/Home"
 import More from './components/Product/More'
 // import Cards from './components/Glow3/Cards'
@@ -13,6 +13,7 @@ import Product from './components/Product';
 import Swap from './components/Swap';
 import Blogcard from './components/BlogCrd';
 import About from "./components/blog/about/About"
+import Glow from "./components/Glow"
 const App = () => {
   return (
     <div className='w-screen h-100vh  bg-[#D8DEEE]' >
@@ -25,6 +26,8 @@ const App = () => {
  
     <Element>  <HeroSection/></Element>
     <Element>  <Swap/></Element>
+    <Element>  <Glow/></Element>
+
     <Element>  <Feed/></Element>
     <Element> <Blogcard/> </Element>
     <Element>  <About /> </Element>
