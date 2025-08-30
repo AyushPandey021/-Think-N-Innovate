@@ -9,21 +9,22 @@ import More from './components/Product/More'
 // import Cards from './components/Glow3/Cards'
 import Testo from "./components/Testo/Testo"
 import Feed from './components/Feed'
+import Product from './components/Product';
 
 const App = () => {
   return (
-    <div className=' '>
+    <div className='w-full h-full '>
      
 
     <Element>  <Home/></Element>
-    <Element>  <More/></Element>
+    <Element>    <Product/></Element>
     <Element>  <Acard/></Element>
     <Element>  <Testo/></Element>
     <Element>  <More/></Element>
     <Element>  <HeroSection/></Element>
     <Element>  <Feed/></Element>
     <Element>  <GlowCard/></Element>
-      
+    
       {/* <More/>
         <HeroSection />
         <Cards/>
