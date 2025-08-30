@@ -41,8 +41,8 @@ const products = [
 
 const ProductCards = () => {
   return (
-    <div className="h-screen bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center p-6">
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-8 max-w-6xl w-full">
+    <div className="h-screen w-screen bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center p-6">
+      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-8 w-6xl w-full">
         {products.map((product) => (
           <div
             key={product.id}
