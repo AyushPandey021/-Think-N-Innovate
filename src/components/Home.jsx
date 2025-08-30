@@ -4,7 +4,7 @@ import { TypeAnimation } from "react-type-animation";
 
 const HeroSection = () => {
   return (
-    <div className="w-[100vw] bg-gradient-to-r from-white to-gray-50">
+    <div className="w-[100vw] overflow-hidden bg-gradient-to-r from-white to-gray-50">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between px-6 md:px-12 py-16 gap-10">
         
         {/* LEFT SIDE */}

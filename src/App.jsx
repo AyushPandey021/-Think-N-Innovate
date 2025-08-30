@@ -13,7 +13,7 @@ import Product from './components/Product';
 
 const App = () => {
   return (
-    <div className='w-100vw h-100vh '>
+    <div className='w-screen h-100vh '>
      
 
     <Element>  <Home/></Element>
