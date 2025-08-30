@@ -13,14 +13,14 @@ import Product from './components/Product';
 
 const App = () => {
   return (
-    <div className='w-full h-full '>
+    <div className='w-100vw h-100vh '>
      
 
     <Element>  <Home/></Element>
     <Element>    <Product/></Element>
     <Element>  <Acard/></Element>
     <Element>  <Testo/></Element>
-    <Element>  <More/></Element>
+ 
     <Element>  <HeroSection/></Element>
     <Element>  <Feed/></Element>
     <Element>  <GlowCard/></Element>
