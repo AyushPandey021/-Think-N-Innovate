@@ -23,7 +23,7 @@ const App = () => {
  
     <Element>  <HeroSection/></Element>
     <Element>  <Feed/></Element>
-    {/* <Element>  <GlowCard/></Element> */}
+    <Element>  <GlowCard/></Element>
     
       {/* <More/>
         <HeroSection />

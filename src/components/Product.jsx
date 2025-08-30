@@ -5,7 +5,7 @@ const courses = [
   {
     id: 1,
     name: "UI/UX Design Fundamentals",
-    img: "https://source.unsplash.com/400x300/?design,ui",
+    img: "https://images.unsplash.com/photo-1756408263381-ed1488d9b1ea?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D",
     rating: 4.5,
     price: "$120",
     eligible: "Beginner Friendly",
@@ -13,7 +13,7 @@ const courses = [
   {
     id: 2,
     name: "Fullstack Web Development",
-    img: "https://source.unsplash.com/400x300/?coding,web",
+    img: "https://images.unsplash.com/photo-1756456386209-2c83bab17506?q=80&w=1024&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     rating: 4.8,
     price: "$250",
     eligible: "Intermediate",
@@ -21,7 +21,7 @@ const courses = [
   {
     id: 3,
     name: "Digital Marketing Essentials",
-    img: "https://source.unsplash.com/400x300/?marketing,digital",
+    img: "https://images.unsplash.com/photo-1756456386209-2c83bab17506?q=80&w=1024&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     rating: 4.3,
     price: "$99",
     eligible: "All Levels",
@@ -37,7 +37,7 @@ const courses = [
   {
     id: 5,
     name: "Photography Masterclass",
-    img: "https://source.unsplash.com/400x300/?photography,camera",
+    img: "hhttps://images.unsplash.com/photo-1738081359113-a7a33c509cf9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     rating: 4.6,
     price: "$150",
     eligible: "Beginner Friendly",
@@ -45,7 +45,7 @@ const courses = [
   {
     id: 6,
     name: "Business Management",
-    img: "https://source.unsplash.com/400x300/?business,office",
+    img: "https://images.unsplash.com/photo-1756408263381-ed1488d9b1ea?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxNXx8fGVufDB8fHx8fA%3D%3D",
     rating: 4.2,
     price: "$180",
     eligible: "Intermediate",
