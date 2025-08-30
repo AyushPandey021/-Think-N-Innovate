@@ -36,7 +36,7 @@ const CoreValues = () => {
         transition={{ duration: 0.8 }}
         className="text-3xl md:text-4xl font-extrabold text-center text-gray-700 mb-12 drop-shadow-lg"
       >
-        Our Core Values
+        Our Core <span className="text-indigo-600">Values</span> 
       </motion.h2>
 
       {/* Cards wrapper */}
