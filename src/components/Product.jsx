@@ -1,72 +1,122 @@
 import React from "react";
+import { Star } from "lucide-react"; // for rating stars
 
-const products = [
+const courses = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    username: "@sarahjohnson",
-    img: "https://randomuser.me/api/portraits/women/44.jpg",
+    name: "UI/UX Design Fundamentals",
+    img: "https://source.unsplash.com/400x300/?design,ui",
+    rating: 4.5,
+    price: "$120",
+    eligible: "Beginner Friendly",
   },
   {
     id: 2,
-    name: "Mike Chen",
-    username: "@mikechen",
-    img: "https://randomuser.me/api/portraits/men/46.jpg",
+    name: "Fullstack Web Development",
+    img: "https://source.unsplash.com/400x300/?coding,web",
+    rating: 4.8,
+    price: "$250",
+    eligible: "Intermediate",
   },
   {
     id: 3,
-    name: "Emma Brown",
-    username: "@emmabrown",
-    img: "https://randomuser.me/api/portraits/women/50.jpg",
+    name: "Digital Marketing Essentials",
+    img: "https://source.unsplash.com/400x300/?marketing,digital",
+    rating: 4.3,
+    price: "$99",
+    eligible: "All Levels",
   },
   {
     id: 4,
-    name: "David Lee",
-    username: "@davidlee",
-    img: "https://randomuser.me/api/portraits/men/52.jpg",
+    name: "Data Science & Machine Learning",
+    img: "https://source.unsplash.com/400x300/?data,ai",
+    rating: 4.9,
+    price: "$300",
+    eligible: "Advanced",
   },
   {
     id: 5,
-    name: "Sophia Martinez",
-    username: "@sophiamartinez",
-    img: "https://randomuser.me/api/portraits/women/65.jpg",
+    name: "Photography Masterclass",
+    img: "https://source.unsplash.com/400x300/?photography,camera",
+    rating: 4.6,
+    price: "$150",
+    eligible: "Beginner Friendly",
   },
   {
     id: 6,
-    name: "James Wilson",
-    username: "@jameswilson",
-    img: "https://randomuser.me/api/portraits/men/70.jpg",
+    name: "Business Management",
+    img: "https://source.unsplash.com/400x300/?business,office",
+    rating: 4.2,
+    price: "$180",
+    eligible: "Intermediate",
   },
 ];
 
-const ProductCards = () => {
+const CourseCards = () => {
   return (
-    <div className="h-screen w-screen bg-gradient-to-r from-gray-100 to-gray-200 flex items-center justify-center p-6">
-      <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 gap-8 w-6xl w-full">
-        {products.map((product) => (
+    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4 py-12">
+      {/* Section Heading */}
+      <div className="text-center max-w-3xl mb-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+          Popular <span className="text-indigo-600">Courses</span>
+        </h2>
+        <p className="mt-3 text-gray-600 text-base md:text-lg">
+          Choose from our wide range of skill enhancement courses designed to
+          boost your career with engaging and practical learning solutions.
+        </p>
+      </div>
+
+      {/* Responsive Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl w-full">
+        {courses.map((course) => (
           <div
-            key={product.id}
-            className="bg-gradient-to-b from-blue-500 to-indigo-600 rounded-2xl shadow-xl p-4 flex flex-col items-center 
-            transform transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-blue-300"
+            key={course.id}
+            className="bg-white rounded-xl shadow-md hover:shadow-2xl overflow-hidden 
+            transform transition duration-300 hover:-translate-y-2 hover:scale-105"
           >
             {/* Image */}
-            <img
-              src={product.img}
-              alt={product.name}
-              className="w-full h-40 object-cover rounded-lg"
-            />
+            <div className="h-44 w-full overflow-hidden">
+              <img
+                src={course.img}
+                alt={course.name}
+                className="w-full h-full object-cover transform transition duration-500 hover:scale-110"
+              />
+            </div>
 
             {/* Info */}
-            <h2 className="text-white text-lg font-semibold mt-4">
-              {product.name}
-            </h2>
-            <p className="text-gray-200">{product.username}</p>
+            <div className="p-5">
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                {course.name}
+              </h3>
 
-            {/* Button */}
-            <button className="mt-4 px-6 py-2 rounded-full bg-yellow-200 text-blue-600 font-semibold 
-              transition-all duration-300 hover:bg-yellow-300 hover:shadow-lg">
-              Read More
-            </button>
+              {/* Rating */}
+              <div className="flex items-center text-yellow-500 mb-2">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    size={16}
+                    className={i < Math.round(course.rating) ? "fill-yellow-400" : "text-gray-300"}
+                  />
+                ))}
+                <span className="ml-2 text-sm text-gray-600">
+                  {course.rating} / 5
+                </span>
+              </div>
+
+              {/* Price + Eligibility */}
+              <div className="flex justify-between text-sm text-gray-600 mb-4">
+                <span className="font-medium text-indigo-600">{course.price}</span>
+                <span>{course.eligible}</span>
+              </div>
+
+              {/* Button */}
+              <button
+                className="w-full py-2 rounded-lg bg-indigo-600 text-white font-medium 
+                transition duration-300 hover:bg-indigo-700"
+              >
+                Read More
+              </button>
+            </div>
           </div>
         ))}
       </div>
@@ -74,4 +124,4 @@ const ProductCards = () => {
   );
 };
 
-export default ProductCards;
+export default CourseCards;

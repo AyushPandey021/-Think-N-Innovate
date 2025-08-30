@@ -13,13 +13,13 @@ import Product from './components/Product';
 
 const App = () => {
   return (
-    <div className='w-screen h-100vh '>
+    <div className='w-screen h-100vh ' >
      
 
     <Element>  <Home/></Element>
     <Element>    <Product/></Element>
     <Element>  <Acard/></Element>
-    {/* <Element>  <Testo/></Element> */}
+    <Element>  <Testo/></Element>
  
     <Element>  <HeroSection/></Element>
     <Element>  <Feed/></Element>
@@ -28,7 +28,7 @@ const App = () => {
       {/* <More/>
         <HeroSection />
         <Cards/>
-      <Testo/>
+      <Testo/>`
       <Feed/> */}
       {/* <GlowCard /> */}
       {/* <About /> */}
