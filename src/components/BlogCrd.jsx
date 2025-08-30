@@ -48,10 +48,10 @@ const cardVariants = {
 
 export default function SmoothBlogCards() {
   return (
-    <section className="max-w-7xl font-stretch-50% mx-auto px-6 py-12">
+    <section className="max-w-7xl bg-white font-stretch-50% mx-auto px-6 py-12">
       <div className="mb-8 text-center">
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Featured articles</h2>
-        <p className="mt-2 text-gray-500">Curated reads to sharpen your craft</p>
+        <h2 className="text-3xl sm:text-4xl bg-white text-blue-900 font-semibold tracking-tight">Featured articles</h2>
+        <p className="mt-2 text-gray-900">Curated reads to sharpen your craft</p>
       </div>
 
       <motion.div
@@ -64,7 +64,7 @@ export default function SmoothBlogCards() {
         {cards.map((c) => (
           <motion.article
             key={c.title}
-            className="relative group bg-white dark:bg-zinc-900 rounded-2xl shadow-md overflow-hidden w-full lg:w-1/3 grid grid-cols-1 lg:grid-cols-2"
+            className="relative group bg-white dark:bg-white-900 rounded-2xl shadow-md overflow-hidden w-full lg:w-1/3 grid grid-cols-1 lg:grid-cols-2"
             variants={cardVariants}
             whileHover={{ translateY: -6 }}
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
@@ -112,7 +112,7 @@ export default function SmoothBlogCards() {
               </div>
 
               <div className="mt-6 flex items-center justify-between">
-                <div className="text-sm text-zinc-500">5 min read</div>
+                <div className="text-sm text-zinc-900">5 min read</div>
                 <AnimatedCTA />
               </div>
             </div>

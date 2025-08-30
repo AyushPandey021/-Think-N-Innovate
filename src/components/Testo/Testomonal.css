@@ -10,15 +10,6 @@
   overflow: hidden;
 }
 
-/* Heading */
-.testimonial-heading {
-  text-align: center;
-  font-size: clamp(1.5rem, 5vw, 2.2rem);
-  font-weight: bold;
-  margin-bottom: 30px;
-  color: #333;
-}
-
 /* Logos container */
 .logos {
   display: flex;
@@ -27,11 +18,10 @@
   width: 100%;
 }
 
-/* Horizontal slide (Desktop only) */
 .logos-slide {
   display: flex;
-  gap: 20px;
   flex-shrink: 0;
+  gap: 0; /* ✅ No gap */
   animation: scroll 25s linear infinite;
   will-change: transform;
 }
@@ -49,7 +39,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  scroll-snap-align: start;
+  margin: 0 10px; /* ✅ spacing instead of gap */
 }
 
 /* Hover glowing (Desktop only) */
@@ -109,7 +99,7 @@
   margin-top: auto;
 }
 
-/* Infinite scroll animation */
+/* ✅ Infinite scroll animation (covers both slides = 200%) */
 @keyframes scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-100%); }
@@ -118,17 +108,17 @@
 /* ✅ Tablet & below - disable animations and fix overflow */
 @media (max-width: 1024px) {
   .logos-slide {
-    animation: none !important;   /* stop infinite scroll */
-    flex-wrap: wrap;              /* allow wrapping */
-    justify-content: center;      /* center align cards */
-    width: 100%;                  /* prevent extra width */
+    animation: none !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
   }
 
   .card {
-    transition: none !important;  /* no hover transition */
-    transform: none !important;   /* no tilt */
-    margin: 10px;                 /* spacing between cards */
-    flex: 1 1 calc(50% - 20px);   /* 2 cards per row on tablet */
+    transition: none !important;
+    transform: none !important;
+    margin: 10px;
+    flex: 1 1 calc(50% - 20px);
     max-width: 300px;
   }
 }
@@ -136,8 +126,8 @@
 /* ✅ Mobile */
 @media (max-width: 768px) {
   .card {
-    flex: 1 1 100%;               /* 1 card per row */
-    max-width: 90%;               /* keep centered */
-    margin: 10px auto;            /* auto center */
+    flex: 1 1 100%;
+    max-width: 90%;
+    margin: 10px auto;
   }
 }

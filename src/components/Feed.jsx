@@ -22,23 +22,30 @@ const cardsData = [
 
 const FeedbackCards = () => {
   return (
-    <div className="p-6 md:p-10">
-      {/* ✅ Main Heading on Top */}
-      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-white mb-8">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-white p-6 md:p-10">
+      {/* ✅ Main Heading */}
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-blue-900 mb-8">
         Feedback Video Showcase
       </h1>
 
-      {/* Cards in ONE ROW (horizontal scroll on mobile) */}
-      <div className="flex gap-6 overflow-x-auto scrollbar-hide px-2">
-        {cardsData.map((card, index) => (
-          <div key={index} className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[340px]">
-            <FeedbackCard
-              title={card.title}
-              description={card.description}
-              video={card.video}
-            />
-          </div>
-        ))}
+      {/* ✅ Cards Section with Scroll */}
+      <div className="w-full max-w-6xl">
+        <div
+          className="flex gap-6 overflow-x-auto px-2 pb-4 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900"
+        >
+          {cardsData.map((card, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[340px] mx-auto"
+            >
+              <FeedbackCard
+                title={card.title}
+                description={card.description}
+                video={card.video}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -73,7 +80,7 @@ const FeedbackCard = ({ title, description, video }) => {
         </p>
       </div>
 
-      {/* Video */}
+      {/* Video Section */}
       <div
         className="relative rounded-xl overflow-hidden cursor-pointer"
         onClick={togglePlay}

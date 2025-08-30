@@ -10,7 +10,9 @@ import More from './components/Product/More'
 import Testo from "./components/Testo/Testo"
 import Feed from './components/Feed'
 import Product from './components/Product';
-
+import Swap from './components/Swap';
+import Blogcard from './components/BlogCrd';
+import About from "./components/blog/about/About"
 const App = () => {
   return (
     <div className='w-screen h-100vh ' >
@@ -22,8 +24,11 @@ const App = () => {
     <Element>  <Testo/></Element>
  
     <Element>  <HeroSection/></Element>
+    <Element>  <Swap/></Element>
     <Element>  <Feed/></Element>
-    <Element>  <GlowCard/></Element>
+    <Element> <Blogcard/> </Element>
+    <Element>  <About /> </Element>
+    {/* <Element>  <GlowCard/></Element> */}
     
       {/* <More/>
         <HeroSection />
@@ -31,7 +36,7 @@ const App = () => {
       <Testo/>`
       <Feed/> */}
       {/* <GlowCard /> */}
-      {/* <About /> */}
+     
     </div>
   )
 }

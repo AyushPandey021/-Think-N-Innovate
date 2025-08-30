@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import "./Testomonal.css";
 import { Star } from "lucide-react";
 
@@ -33,17 +33,13 @@ export default function TestimonialSlider() {
   const logosRef = useRef(null);
 
   useEffect(() => {
-    const logosSlide = logosRef.current.querySelector(".logos-slide");
-    const clone = logosSlide.cloneNode(true);
+    const slide = logosRef.current.querySelector(".logos-slide");
+    const clone = slide.cloneNode(true);
     logosRef.current.appendChild(clone);
   }, []);
 
   return (
     <div className="testimonial-wrapper">
-      {/* Heading */}
-      {/* <h1 className="testimonial-heading">✨ Testimonials ✨</h1> */}
-
-      {/* Scrolling Slider */}
       <div className="logos" ref={logosRef}>
         <div className="logos-slide">
           {testimonials.map((t, idx) => (
@@ -51,7 +47,6 @@ export default function TestimonialSlider() {
               key={idx}
               className={`card ${idx % 2 === 0 ? "left" : "right"}`}
             >
-              {/* Header */}
               <div className="header">
                 <img src={t.img} alt={t.name} />
                 <div>
@@ -59,8 +54,6 @@ export default function TestimonialSlider() {
                   <p>{t.role}</p>
                 </div>
               </div>
-
-              {/* Stars */}
               <div className="stars">
                 {Array(5)
                   .fill(0)
@@ -68,8 +61,6 @@ export default function TestimonialSlider() {
                     <Star key={i} size={16} fill="currentColor" />
                   ))}
               </div>
-
-              {/* Review */}
               <p className="review">"{t.text}"</p>
             </section>
           ))}
