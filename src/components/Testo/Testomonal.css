@@ -1,0 +1,119 @@
+.testimonial-wrapper {
+  width: 97vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  align-items: center;
+  background: #ffffff;
+  padding: 40px 20px;
+  overflow: hidden;
+}
+
+/* Heading */
+.testimonial-heading {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+/* Logos container */
+.logos {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+/* Horizontal slide */
+.logos-slide {
+  display: flex;
+  gap: 40px;
+  flex-shrink: 0; /* Prevent shrinking when duplicated */
+  animation: scroll 25s linear infinite;
+}
+
+/* Card */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  min-width: 280px;
+  max-width: 350px;
+  min-height: 200px; 
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Hover glowing */
+.card:hover {
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2),
+              0 0 25px rgba(232, 14, 203, 0.6),
+              0 0 40px rgba(20, 111, 222, 0.5);
+}
+
+/* Slight alternate tilt for zig-zag effect */
+.card.left {
+  transform: rotate(-2deg);
+}
+.card.right {
+  transform: rotate(2deg);
+}
+
+/* Reset tilt on hover */
+.card.left:hover,
+.card.right:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.05);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.header img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #eee;
+}
+.header h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.header p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Stars */
+.stars {
+  color: #fbbf24;
+  display: flex;
+  gap: 4px;
+  margin: 10px 0;
+}
+
+/* Review */
+.review {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.5;
+  margin-top: auto;
+}
+
+/* Infinite scroll animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); } /* scroll full width now */
+}
