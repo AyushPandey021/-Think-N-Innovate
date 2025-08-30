@@ -1,5 +1,5 @@
 .testimonial-wrapper {
-  width: 97vw;
+  width: 99vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,9 +13,9 @@
 /* Heading */
 .testimonial-heading {
   text-align: center;
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
   font-weight: bold;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   color: #333;
 }
 
@@ -27,12 +27,13 @@
   width: 100%;
 }
 
-/* Horizontal slide */
+/* Horizontal slide (Desktop only) */
 .logos-slide {
   display: flex;
-  gap: 40px;
-  flex-shrink: 0; /* Prevent shrinking when duplicated */
+  gap: 20px;
+  flex-shrink: 0;
   animation: scroll 25s linear infinite;
+  will-change: transform;
 }
 
 /* Card */
@@ -40,17 +41,18 @@
   background: white;
   border-radius: 16px;
   padding: 20px;
-  min-width: 280px;
-  max-width: 350px;
-  min-height: 200px; 
+  min-width: 260px;
+  max-width: 340px;
+  min-height: 200px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  scroll-snap-align: start;
 }
 
-/* Hover glowing */
+/* Hover glowing (Desktop only) */
 .card:hover {
   transform: translateY(-8px) scale(1.05);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2),
@@ -58,15 +60,10 @@
               0 0 40px rgba(20, 111, 222, 0.5);
 }
 
-/* Slight alternate tilt for zig-zag effect */
-.card.left {
-  transform: rotate(-2deg);
-}
-.card.right {
-  transform: rotate(2deg);
-}
+/* Tilt effect */
+.card.left { transform: rotate(-2deg); }
+.card.right { transform: rotate(2deg); }
 
-/* Reset tilt on hover */
 .card.left:hover,
 .card.right:hover {
   transform: rotate(0deg) translateY(-8px) scale(1.05);
@@ -79,15 +76,15 @@
   gap: 12px;
 }
 .header img {
-  width: 60px;
-  height: 60px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid #eee;
 }
 .header h4 {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 .header p {
@@ -101,7 +98,7 @@
   color: #fbbf24;
   display: flex;
   gap: 4px;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 /* Review */
@@ -115,5 +112,32 @@
 /* Infinite scroll animation */
 @keyframes scroll {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); } /* scroll full width now */
+  100% { transform: translateX(-100%); }
+}
+
+/* ✅ Tablet & below - disable animations and fix overflow */
+@media (max-width: 1024px) {
+  .logos-slide {
+    animation: none !important;   /* stop infinite scroll */
+    flex-wrap: wrap;              /* allow wrapping */
+    justify-content: center;      /* center align cards */
+    width: 100%;                  /* prevent extra width */
+  }
+
+  .card {
+    transition: none !important;  /* no hover transition */
+    transform: none !important;   /* no tilt */
+    margin: 10px;                 /* spacing between cards */
+    flex: 1 1 calc(50% - 20px);   /* 2 cards per row on tablet */
+    max-width: 300px;
+  }
+}
+
+/* ✅ Mobile */
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 100%;               /* 1 card per row */
+    max-width: 90%;               /* keep centered */
+    margin: 10px auto;            /* auto center */
+  }
 }

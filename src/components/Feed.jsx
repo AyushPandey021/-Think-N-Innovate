@@ -4,12 +4,14 @@ const cardsData = [
   {
     title: "The wait is over",
     description: "Give your project the home it deserves.",
-    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+    video:
+      "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
   },
   {
     title: "Branding",
     description: "No configuration needed. We take care of it.",
-    video: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
+    video:
+      "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
   },
   {
     title: "Feedback",
@@ -20,21 +22,22 @@ const cardsData = [
 
 const FeedbackCards = () => {
   return (
-    <div className="p-8">
+    <div className="p-6 md:p-10">
       {/* ✅ Main Heading on Top */}
-      <h1 className="text-3xl md:text-4xl font-bold text-center text-white mb-10">
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-white mb-8">
         Feedback Video Showcase
       </h1>
 
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Cards in ONE ROW (horizontal scroll on mobile) */}
+      <div className="flex gap-6 overflow-x-auto scrollbar-hide px-2">
         {cardsData.map((card, index) => (
-          <FeedbackCard
-            key={index}
-            title={card.title}
-            description={card.description}
-            video={card.video}
-          />
+          <div key={index} className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[340px]">
+            <FeedbackCard
+              title={card.title}
+              description={card.description}
+              video={card.video}
+            />
+          </div>
         ))}
       </div>
     </div>
@@ -56,13 +59,18 @@ const FeedbackCard = ({ title, description, video }) => {
 
   return (
     <div
-      className="bg-gradient-to-b from-slate-800 to-slate-900 text-white rounded-2xl p-6 shadow-lg 
-      hover:scale-105 hover:shadow-2xl transition-transform duration-300 ease-in-out flex flex-col justify-between"
+      className="bg-gradient-to-b from-slate-800 to-slate-900 text-white rounded-2xl 
+      p-4 sm:p-5 md:p-6 shadow-lg hover:scale-105 hover:shadow-2xl 
+      transition-transform duration-300 ease-in-out flex flex-col justify-between w-full"
     >
       {/* Card Heading */}
       <div>
-        <h2 className="text-xl font-bold mb-2">{title}</h2>
-        <p className="text-slate-300 mb-4">{description}</p>
+        <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">
+          {title}
+        </h2>
+        <p className="text-slate-300 text-sm sm:text-base mb-4">
+          {description}
+        </p>
       </div>
 
       {/* Video */}
@@ -72,12 +80,12 @@ const FeedbackCard = ({ title, description, video }) => {
       >
         <video
           ref={videoRef}
-          className="w-full h-64 object-cover rounded-xl"
+          className="w-full h-40 sm:h-48 md:h-64 object-cover rounded-xl"
           src={video}
         />
         {!isPlaying && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/40">
-            <span className="text-5xl">▶</span>
+            <span className="text-4xl sm:text-5xl">▶</span>
           </div>
         )}
       </div>

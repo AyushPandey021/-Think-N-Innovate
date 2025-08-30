@@ -4,7 +4,7 @@ import { RefreshCw, Users, GraduationCap } from "lucide-react";
 
 const coreValues = [
   {
-    icon: <RefreshCw className="w-10 h-10 text-blue-500" />,
+    icon: <RefreshCw className="w-10 h-20 text-blue-500" />,
     title: "Sustainable Environment & Infrastructure",
     description:
       "Creative & interactive learning spaces for kids to imagine & explore, fostering innovation in every corner.",
@@ -28,7 +28,7 @@ const coreValues = [
 
 const CoreValues = () => {
   return (
-    <div className="py-16 px-6 md:px-12 bg-white">
+    <div className="py-16 px-4 sm:px-8  bg-white">
       {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -30 }}
@@ -39,8 +39,8 @@ const CoreValues = () => {
         Our Core Values
       </motion.h2>
 
-      {/* Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {/* Horizontal Scrollable Row */}
+      <div className="flex gap-6  overflow-x-auto scrollbar-hide px-2 sm:px-0">
         {coreValues.map((item, index) => (
           <motion.div
             key={index}
@@ -48,12 +48,13 @@ const CoreValues = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
             whileHover={{ scale: 1.05 }}
-            className={`rounded-2xl p-8 backdrop-blur-xl bg-white/10 border border-white/20 
-              text-center flex flex-col items-center 
-              hover:shadow-2xl transition-all duration-500 ${item.shadow}`}
+            className={`min-w-[280px] sm:min-w-[320px] md:min-w-[350px] rounded-2xl p-6 
+              backdrop-blur-xl bg-white/10 border border-white/20 
+              text-center flex flex-col items-center hover:shadow-2xl 
+              transition-all duration-500 ${item.shadow}`}
           >
             {/* Icon */}
-            <div className="w-16 h-16 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md mb-4">
+            <div className="w-16 h-18 flex items-center justify-center rounded-full bg-white/20 backdrop-blur-md mb-4">
               {item.icon}
             </div>
             {/* Title */}
@@ -61,7 +62,7 @@ const CoreValues = () => {
               {item.title}
             </h3>
             {/* Description */}
-            <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+            <p className="text-slate-500 text-sm md:text-base leading-relaxed">
               {item.description}
             </p>
           </motion.div>

@@ -6,49 +6,60 @@
   --size: 200;
 }
 
-/* Reset */
-*,
-*:after,
-*:before { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  background: #fff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+article:first-of-type {
+  --base: 80;
+  --spread: 500;
+  --outer: 1;
+}
+article:last-of-type {
+  --outer: 1;
+  --base: 220;
+  --spread: 200;
 }
 
-.wrapper { position: relative; padding: 1rem; }
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
 
-/* Card Base */
+.wrapper {
+  position: relative;
+}
+
+/* Larger card */
 article {
   aspect-ratio: 3 / 4;
   border-radius: calc(var(--radius) * 1px);
-  width: clamp(260px, 90vw, 620px);         /* desktop/tablet */
-  height: clamp(220px, 50vw, 320px);
+  width: 620px;              /* ⬆ increased size */
+  height: 320px;         
+      /* ⬆ fixed height for consistency */
   position: relative;
-  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-  display: grid;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 2em;
   grid-template-rows: 1fr auto;
-  padding: 1.2rem;
+  box-shadow: 0 1rem 2rem -1rem black;
+  padding: 1.5rem;
+  display: grid;
   border: 1px solid hsl(0 0% 100% / 0.15);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  backdrop-filter: blur(calc(var(--cardblur, 5) * 1px));
   touch-action: none;
-  background: rgba(255,255,255,0.75);
 }
 
-/* Grid Layout (desktop/tablet) */
+/* Grid layout for 2x2 cards */
 main {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+  gap: 2.5rem;
   align-items: center;
-  justify-items: center;
-  padding: 2rem 1rem;
-  max-width: 1100px;
+  justify-items: center; /* center each card */
+  justify-content: center;
+  padding: 2rem;
+  max-width: 1000px;      /* keeps layout neat */
   margin: 0 auto;
 }
 
-/* Glow Effect (unchanged) */
+/* Glow effect */
 [data-glow] {
   --border-size: calc(var(--border, 2) * 1px);
   --spotlight-size: calc(var(--size, 150) * 1px);
@@ -57,12 +68,111 @@ main {
     var(--spotlight-size) var(--spotlight-size) at
     calc(var(--x, 0) * 1px)
     calc(var(--y, 0) * 1px),
-    hsl(var(--hue, 210) calc(var(--saturation, 100) * 1%) calc(var(--lightness, 70) * 1%) / var(--bg-spot-opacity, 0.1)),
+    hsl(
+      var(--hue, 210)
+      calc(var(--saturation, 100) * 1%)
+      calc(var(--lightness, 70) * 1%) /
+      var(--bg-spot-opacity, 0.1)
+    ),
     transparent
   );
+  background-color: var(--backdrop, transparent);
+  background-size: calc(100% + (2 * var(--border-size)))
+    calc(100% + (2 * var(--border-size)));
+  background-position: 50% 50%;
+  background-attachment: fixed;
   border: var(--border-size) solid var(--backup-border);
-  border-radius: calc(var(--radius) * 1px);
   position: relative;
+  touch-action: none;
+}
+
+[data-glow]::before,
+[data-glow]::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: calc(var(--border-size) * -1);
+  border: var(--border-size) solid transparent;
+  border-radius: calc(var(--radius) * 1px);
+  background-attachment: fixed;
+  background-size: calc(100% + (2 * var(--border-size)))
+    calc(100% + (2 * var(--border-size)));
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  mask:
+    linear-gradient(transparent, transparent),
+    linear-gradient(white, white);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+}
+
+/* Emphasis light */
+[data-glow]::before {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.75) calc(var(--spotlight-size) * 0.75) at
+    calc(var(--x, 0) * 1px)
+    calc(var(--y, 0) * 1px),
+    hsl(
+      var(--hue, 210)
+      calc(var(--saturation, 100) * 1%)
+      calc(var(--lightness, 50) * 1%) /
+      var(--border-spot-opacity, 1)
+    ),
+    transparent 100%
+  );
+  filter: brightness(2);
+}
+
+/* Spotlight */
+[data-glow]::after {
+  background-image: radial-gradient(
+    calc(var(--spotlight-size) * 0.5) calc(var(--spotlight-size) * 0.5) at
+    calc(var(--x, 0) * 1px)
+    calc(var(--y, 0) * 1px),
+    hsl(0 100% 100% / var(--border-light-opacity, 1)),
+    transparent 100%
+  );
+}
+
+[data-glow] > [data-glow]:not(:is(a, button)) {
+  position: absolute;
+  inset: 0;
+  will-change: filter;
+  opacity: var(--outer, 1);
+  border-radius: calc(var(--radius) * 1px);
+  border-width: calc(var(--border-size) * 20);
+  filter: blur(calc(var(--border-size) * 10));
+  background: none;
+  pointer-events: none;
+}
+
+[data-glow] > [data-glow]:not(:is(a, button))::before {
+  inset: -10px;
+  border-width: 10px;
+}
+
+[data-glow] > [data-glow] {
+  border: none;
+}
+
+[data-glow] :is(a, button) {
+  border-radius: calc(var(--radius) * 1px);
+  border: var(--border-size) solid transparent;
+}
+
+[data-glow] :is(a, button) [data-glow] {
+  background: none;
+}
+
+[data-glow] :is(a, button) [data-glow]::before {
+  inset: calc(var(--border-size) * -1);
+  border-width: calc(var(--border-size) * 1);
+}
+
+article button {
+  padding: 0.75rem 2rem;
+  align-self: end;
+  color: hsl(0 0% 80%);
 }
 
 /* Card Content */
@@ -71,55 +181,28 @@ main {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 0.8rem;
+  gap: 1rem;
   height: 100%;
   justify-content: center;
 }
 
 .card-content .icon {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  background: #fff;
-  color: #2563eb;
+  font-size: 2rem; /* or replace with SVG */
+  background: white;
+  color: #2563eb; /* blue */
   border-radius: 50%;
-  padding: 0.5rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  padding: 0.6rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .card-content h3 {
-  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  font-size: 1.2rem;
   font-weight: 700;
-  color: #1e3a8a;
+  color: #1e3a8a; /* deep blue */
 }
 
 .card-content p {
-  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+  font-size: 0.9rem;
   color: #374151;
-  line-height: 1.5;
-  max-width: 90%;
+  line-height: 1.4;
 }
-
-/* ✅ PHONE VIEW: show 4 small cards (2 columns × 2 rows) */
-@media (max-width: 480px) {
-  main {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* two columns */
-    gap: 0.75rem;
-    padding: 1rem;
-  }
-
-  article {
-    width: 100% !important;    /* fill the grid track */
-    height: auto;              /* keep aspect ratio */
-    aspect-ratio: 3 / 4;
-    padding: 0.75rem;
-    font-size: 0.85rem;        /* smaller text */
-    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-  }
-
-  .card-content { gap: 0.55rem; }
-  .card-content .icon { font-size: 1.1rem; padding: 0.4rem; }
-  .card-content h3 { font-size: 0.95rem; }
-  .card-content p  { font-size: 0.78rem; max-width: 100%; }
-}
-
-
-git remote add origin https://github.com/AyushPandey021/-Think-N-Innovate.git
